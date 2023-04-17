@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInAction } from "../../redux/actions/userActions";
 import Button from "../Button/Button";
-// import { auth } from "../../firebase";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { signIn } from "../../features/user/userSlice";
 import "./AuthForms.css";
 
 const SignIn = ({ onSwitchForm, message }) => {
@@ -27,9 +24,11 @@ const SignIn = ({ onSwitchForm, message }) => {
     },
   });
 
-  useEffect(() => {
-    navigate("/");
-  }, [user]);
+  const handleNavigateToHome = () => {
+    if (localStorage.getItem("authenticated")) {
+      navigate("/");
+    }
+  };
 
   return (
     <div className="auth_container">
@@ -37,10 +36,13 @@ const SignIn = ({ onSwitchForm, message }) => {
         className="auth_form"
         onSubmit={handleSubmit((data) => {
           dispatch(signInAction(data));
+          handleNavigateToHome();
         })}
       >
         <h4 className="form_title">Sign in</h4>
-        <h6 className="auth_msg">auth_msg</h6>
+        {user?.error?.message && (
+          <h6 className="auth_msg">Email and password you entered doesn't exist.</h6>
+        )}
         <label className="form_item">
           <p className="form_label">Email</p>
           <input className="form_input" {...register("email", { required: "Email is required" })} />

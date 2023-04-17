@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signUpAction } from "../../redux/actions/userActions";
-// import { useAuthState } from "react-firebase-hooks/auth";
-// import { signUp } from "../../features/user/userSlice";
-// import { auth } from "../../firebase";
-import "./AuthForms.css";
 import Button from "../Button/Button";
+import "./AuthForms.css";
 
 const SignUp = ({ onSwitchForm }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const user = useSelector((state) => state.user);
 
   const {
     register,
@@ -29,9 +24,11 @@ const SignUp = ({ onSwitchForm }) => {
     },
   });
 
-  useEffect(() => {
-    if (user) console.log(user);
-  }, [user]);
+  const handleNavigateToHome = () => {
+    if (localStorage.getItem("authenticated")) {
+      navigate("/");
+    }
+  };
 
   return (
     <div className="auth_container">
@@ -39,7 +36,7 @@ const SignUp = ({ onSwitchForm }) => {
         className="auth_form"
         onSubmit={handleSubmit((data) => {
           dispatch(signUpAction(data));
-          navigate("/");
+          handleNavigateToHome();
         })}
       >
         <h4 className="form_title">Sign up</h4>
