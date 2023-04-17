@@ -64,9 +64,9 @@ const tmdbApi = {
     const url = `/trending/${mediaType}/${timeWindow}`;
     return axiosClient.get(url, { params: {} });
   },
-  getMoviesByGenre: (genresIds) => {
+  getMoviesByGenre: (params) => {
     const url = `/discover/movie`;
-    return axiosClient.get(url, { params: { with_genres: genresIds } });
+    return axiosClient.get(url, params);
   },
   getGenres: () => {
     const url = `/genre/movie/list`;

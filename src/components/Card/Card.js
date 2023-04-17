@@ -33,8 +33,8 @@ const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onL
           <p className="card_year">{release_date?.split("-")[0]}</p>
         </div>
       </div>
-      <button
-        className="card_button"
+      <span
+        className="card_btn"
         onClick={() => {
           onLikeMovie(movie);
         }}
@@ -44,7 +44,7 @@ const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onL
         ) : (
           <FaRegHeart style={{ color: "#828282", fontSize: "1.1rem" }} />
         )}
-      </button>
+      </span>
     </div>
   );
 };

@@ -188,10 +188,10 @@ export const getTrending = (mediaType, timeWindow) => {
   };
 };
 
-export const getMoviesByGenre = (genresIds) => {
+export const getMoviesByGenre = (params) => {
   return async (dispatch) => {
     dispatch(loading());
-    let response = await tmdbApi.getMoviesByGenre(genresIds);
+    let response = await tmdbApi.getMoviesByGenre(params);
     // console.log(response);
     if (response.status === 200) {
       dispatch(moviesByGenreList(response.data));

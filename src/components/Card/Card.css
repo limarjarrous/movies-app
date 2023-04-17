@@ -52,7 +52,7 @@
     color: gold;
 }
 
-.card_button {
+.card_btn {
     border: none;
     background-color: transparent;
     width: fit-content;
@@ -61,10 +61,10 @@
     top: 3px;
 }
 
-/* .card_button:hover svg,
-.card_button:focus svg {
-    stroke: var(--text-error);
-} */
+.card_btn:hover svg,
+.card_btn:focus svg {
+    fill: var(--text-error);
+}
 
 @media (max-width: 768px) {
     .card_container {

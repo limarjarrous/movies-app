@@ -15,7 +15,7 @@ import "./Home.css";
 const Home = () => {
   const dispatch = useDispatch();
 
-  let [page, setPage] = useState(1);
+  // let [page, setPage] = useState(1);
   let [filtered, setFiltered] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
 
@@ -23,21 +23,20 @@ const Home = () => {
   const genresList = useSelector((state) => state.movies.genresList);
   const moviesList = useSelector((state) => state.movies.moviesList.results);
   const trendingList = useSelector((state) => state.movies.trendingList.results);
+  const moviesList_CP = useSelector((state) => state.movies.moviesList.currentPage);
   const moviesByGenreList = useSelector((state) => state.movies.moviesByGenreList.results);
+  const moviesByGenreList_CP = useSelector((state) => state.movies.moviesByGenreList.currentPage);
 
   useEffect(() => {
-    let params = {};
     dispatch(getTrending("all", "week"));
 
-    params = { page };
+    const params = { page: moviesList_CP };
     dispatch(getMovies("top_rated", { params }));
-    setPage(page + 1);
 
     dispatch(getGenres());
-  }, [dispatch, page]);
+  }, []);
 
   const handleSelectGenre = (item) => {
-    // console.log(item);
     let newGenres = selectedGenres.includes(item)
       ? selectedGenres.filter((genre) => genre !== item)
       : [...selectedGenres, item];
@@ -45,14 +44,19 @@ const Home = () => {
   };
 
   const handleFilterByGenre = () => {
-    dispatch(getMoviesByGenre(selectedGenres));
+    const params = { page: moviesByGenreList_CP, with_genres: selectedGenres };
+    dispatch(getMoviesByGenre({ params }));
     setFiltered(selectedGenres.length ? true : false);
   };
 
   const handleLoadMore = () => {
-    const params = { page };
-    dispatch(getMovies("top_rated", { params }));
-    setPage(++page);
+    if (filtered) {
+      const params = { page: moviesByGenreList_CP, with_genres: selectedGenres };
+      dispatch(getMoviesByGenre({ params }));
+    } else {
+      const params = { page: moviesList_CP };
+      dispatch(getMovies("top_rated", { params }));
+    }
   };
 
   return (

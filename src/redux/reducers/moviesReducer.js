@@ -16,21 +16,25 @@ import {
 
 const initialState = {
   moviesList: {
+    currentPage: 1,
     total_pages: null,
     total_results: null,
     results: [],
   },
   trendingList: {
+    currentPage: 1,
     total_pages: null,
     total_results: null,
     results: [],
   },
   moviesByGenreList: {
+    currentPage: 1,
     total_pages: null,
     total_results: null,
     results: [],
   },
   tvList: {
+    currentPage: 1,
     total_pages: null,
     total_results: null,
     results: [],
@@ -65,6 +69,7 @@ const moviesReducer = (state = initialState, action) => {
         loading: false,
         moviesList: {
           ...state.moviesList,
+          currentPage: state.moviesList.currentPage + 1,
           total_pages: action.payload.total_pages,
           total_results: action.payload.total_results,
           results: [...state.moviesList.results, ...action.payload.results],
@@ -76,6 +81,7 @@ const moviesReducer = (state = initialState, action) => {
         loading: false,
         trendingList: {
           ...state.trendingList,
+          currentPage: state.trendingList.currentPage + 1,
           total_pages: action.payload.total_pages,
           total_results: action.payload.total_results,
           results: [...state.trendingList.results, ...action.payload.results],
@@ -87,6 +93,7 @@ const moviesReducer = (state = initialState, action) => {
         loading: false,
         moviesByGenreList: {
           ...state.moviesByGenreList,
+          currentPage: state.moviesByGenreList.currentPage + 1,
           total_pages: action.payload.total_pages,
           total_results: action.payload.total_results,
           results: [...state.moviesByGenreList.results, ...action.payload.results],

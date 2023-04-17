@@ -1,5 +1,4 @@
 import { useState, lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
 import { SearchContext } from "./Contexts/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
@@ -11,7 +10,6 @@ const Auth = lazy(() => import("./Pages/Auth/Auth"));
 const MoviePage = lazy(() => import("./Pages/MoviePage/MoviePage"));
 
 const App = () => {
-  const user = useSelector((state) => state.user);
   const [searchText, setSearchText] = useState("");
 
   const handleSearch = (e, text) => {
