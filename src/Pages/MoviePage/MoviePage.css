@@ -1,0 +1,135 @@
+.details_page_container {
+    max-width: 90%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--text-white);
+}
+
+@media screen and (max-width: 1100px) {
+    .details_page_container {
+        max-width: 100%;
+    }
+}
+
+/* BANNER SECTION */
+.movie_banner {
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.movie_banner_img {
+    opacity: 0.4;
+    border-radius: 20px;
+}
+
+.movie_banner_title {
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+}
+
+.movie_banner_title h1 {
+    color: var(--text-white);
+    font-size: 5vw;
+}
+
+.movie_banner_title p {
+    color: var(--text-white);
+}
+
+
+/* DETAILS SECTION */
+.movie_details {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: .8em;
+    margin-bottom: 2em;
+    font-size: .95rem;
+}
+
+.movie_poster {
+    grid-row: span 2;
+    width: 150px;
+    height: 230px;
+    border-radius: 8px;
+}
+
+.info_details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: .8em;
+}
+
+.info_rating {
+    display: flex;
+    align-items: center;
+    gap: .8em;
+}
+
+.info_star {
+    color: gold;
+}
+
+.info_year {
+    display: flex;
+    align-items: center;
+}
+
+.info_genres {
+    grid-column: span 2;
+    margin-bottom: .8em;
+    color: var(--text-grey-9);
+}
+
+.info_description {
+    grid-row: 1;
+    grid-column: span 2;
+    margin-bottom: 1em;
+    color: var(--text-white);
+}
+
+.info_cast {
+    grid-column: span 2;
+}
+
+@media (min-width: 576px) {
+    .info_cast {
+        grid-row-start: 3;
+        grid-column-start: 2;
+    }
+}
+
+.cast {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.cast_title {
+    margin-right: 2em;
+    color: var(--text-grey-9);
+}
+
+.cast_content {
+    color: var(--text-white);
+    max-height: 180px;
+    overflow: auto;
+}
+
+
+/* RECOMMENDATIONS SECTION */
+.recommendations {
+    margin-bottom: 2em;
+}
+
+@media (max-width: 768px) {
+    .movie_poster {
+        height: 200px;
+    }
+
+}

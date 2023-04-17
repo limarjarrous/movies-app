@@ -1,0 +1,17 @@
+.section_title {
+    margin-bottom: 2em;
+    color: var(--text-white);
+}
+
+.section_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1em;
+    margin-bottom: 3em;
+}
+
+@media (max-width: 768px) {
+    .section_cards {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    }
+}

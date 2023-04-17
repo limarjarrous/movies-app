@@ -1,0 +1,17 @@
+.section_title {
+    font-size: calc(1rem + 1vw);
+    margin-bottom: .8em;
+    color: var(--text-white);
+}
+
+.slider_container {
+    width: 100%;
+    display: flex;
+    gap: 2em;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.slider_container::-webkit-scrollbar {
+    height: 10px;
+}

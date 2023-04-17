@@ -1,0 +1,98 @@
+.auth_container {
+    /* background-color: brown; */
+    width: 100%;
+    padding: 3em;
+    display: grid;
+    place-items: center;
+}
+
+.auth_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: .8em;
+    min-height: 340px;
+    padding: 1em;
+    border-radius: 12px;
+    background-color: var(--text-grey-2);
+    font-size: 1.2rem;
+}
+
+.form_title {
+    margin: .8em auto;
+}
+
+.auth_msg {
+    text-align: center;
+    color: var(--text-error);
+    font-size: 1rem;
+}
+
+.form_row {
+    display: flex;
+    gap: 20px;
+}
+
+.form_item {
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form_label {
+    margin-bottom: 2px;
+    color: var(--text-grey-a);
+    font-size: 1rem;
+}
+
+.form_input {
+    height: 36px;
+    padding: 0 .9em;
+    color: var(--text-grey-a);
+    border: none;
+    border-radius: 8px;
+    background-color: var(--text-grey-3);
+
+}
+
+.form_input:hover,
+.form_input:focus {
+    background-color: var(--text-grey-5);
+    border: none;
+    outline: none;
+}
+
+/* .sign_button {
+    align-self: flex-end;
+    width: 90px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: var(--text-grey-5);
+    color: var(--text-grey-a);
+    display: grid;
+    place-items: center;
+    font-size: 1rem;
+} */
+.sign_button:hover {
+    background-color: var(--text-grey-5);
+}
+
+.switch_form {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.switch_form_msg {
+    font-size: .9em;
+    color: var(--text-grey-8);
+    cursor: pointer;
+}
+
+.validation_msg,
+.error_msg {
+    color: var(--text-error);
+    font-size: .9em;
+}

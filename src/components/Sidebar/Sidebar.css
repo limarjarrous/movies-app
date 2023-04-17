@@ -1,0 +1,28 @@
+.sidebar_section {
+    margin-bottom: 2em;
+}
+
+.sidebar_title {
+    margin-bottom: .8em;
+    font-size: 1rem;
+    color: var(--text-white);
+}
+
+.sidebar_ul {
+    margin-bottom: 2rem;
+}
+
+.sidebar_li {
+    padding: .1em 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--text-grey-9);
+}
+
+.sidebar_li:hover {
+    color: var(--text-white);
+}
+
+.sidebar_li_active {
+    color: var(--text-white);
+}
