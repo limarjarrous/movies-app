@@ -1,16 +1,22 @@
 .nav {
-    background-color: var(--bg);
-    padding: .8em 0;
+    padding: .6em .5em;
     margin: 0 auto;
+    margin-bottom: 1em;
     display: flex;
     gap: 1em;
-    margin-bottom: 1em;
 
-    border-bottom: 3px solid;
+    border-bottom: 1px solid;
     border-image:
         radial-gradient(var(--text-grey-8),
             var(--bg));
     border-image-slice: 1;
+
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
 }
 
 
@@ -18,7 +24,7 @@
 .brand {
     display: flex;
     align-items: flex-end;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--text-white);
 }
 
@@ -38,12 +44,12 @@
     gap: .6em;
 }
 
-.nav_li {
-    color: var(--text-grey-9);
+.nav_li a {
+    color: var(--text-grey-c);
 }
 
-.nav_li:hover,
-.nav_li:focus {
+.nav_li:hover a,
+.nav_li:focus a {
     color: var(--text-white);
 }
 

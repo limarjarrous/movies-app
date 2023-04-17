@@ -13,7 +13,7 @@ import Slider from "../../components/Slider/Slider";
 import Loader from "../../components/Loader/Loader";
 import "./MoviePage.css";
 
-const Details = () => {
+const MoviePage = () => {
   const dispatch = useDispatch();
   const { movieId } = useParams();
 
@@ -23,7 +23,7 @@ const Details = () => {
     dispatch(getCredits("movie", movieId));
     dispatch(getSimilar("movie", movieId));
     dispatch(getRecommendations("movie", movieId));
-  });
+  }, []);
 
   const details = useSelector((state) => state.movies.details);
   let loading = useSelector((state) => state.movies.loading);
@@ -125,4 +125,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default MoviePage;

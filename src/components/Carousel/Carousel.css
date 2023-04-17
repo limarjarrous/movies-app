@@ -1,8 +1,15 @@
 /* CAROUSEL */
 .carousel_container {
-    max-width: 90%;
+    max-width: 89%;
     margin: 0 auto 2em;
 
+}
+
+@media (max-width:1110px) {
+    .carousel_container {
+        max-width: 100%;
+
+    }
 }
 
 .control_arrow {
