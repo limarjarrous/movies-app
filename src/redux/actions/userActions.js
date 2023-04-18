@@ -4,16 +4,13 @@ import {
   LOGOUT,
   ERROR,
   LOADING,
-  ADD_TO_FAVOURITES,
-  REMOVE_FROM_FAVOURITES,
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_FAVORITES,
 } from "./actionTypes";
 import { auth, db } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { ref, set, onValue } from "firebase/database";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const handleSignIn = (data) => {
   return {
@@ -43,15 +40,15 @@ const handleLoading = () => {
     type: LOADING,
   };
 };
-const handleAddToFavourites = (data) => {
+const handleAddToFavorites = (data) => {
   return {
-    type: ADD_TO_FAVOURITES,
+    type: ADD_TO_FAVORITES,
     payload: data,
   };
 };
-const handleRemoveFromFavourites = (id) => {
+const handleRemoveFromFavorites = (id) => {
   return {
-    type: REMOVE_FROM_FAVOURITES,
+    type: REMOVE_FROM_FAVORITES,
     payload: id,
   };
 };
@@ -109,15 +106,15 @@ export const logout = () => {
   };
 };
 
-export const addToFavourites = (data) => {
+export const addToFavorites = (data) => {
   return async (dispatch) => {
     // dispatch(handleLoading());
-    dispatch(handleAddToFavourites(data));
+    dispatch(handleAddToFavorites(data));
   };
 };
-export const removeFromFavourites = (id) => {
+export const removeFromFavorites = (id) => {
   return async (dispatch) => {
     // dispatch(handleLoading());
-    dispatch(handleRemoveFromFavourites(id));
+    dispatch(handleRemoveFromFavorites(id));
   };
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavourites, removeFromFavourites } from "../../redux/actions/userActions";
+import { addToFavorites, removeFromFavorites } from "../../redux/actions/userActions";
 import Button from "../Button/Button";
 import Card from "../Card/Card";
 import "./ListCards.css";
 
-const ListCards = ({ title, movies, onLoadMore }) => {
+const ListCards = ({ title, movies, onLoadMore, showMore = false }) => {
   const dispatch = useDispatch();
-  const favourites = useSelector((state) => state.user.favourites);
+  const favorites = useSelector((state) => state.user.favorites);
 
   // Filter Movies with Search
   // filteredMovies = filteredMovies.filter((movie) =>
@@ -15,14 +15,14 @@ const ListCards = ({ title, movies, onLoadMore }) => {
   // );
 
   const handleLikeMovie = (movie) => {
-    if (!favourites.length || favourites.findIndex((m) => m.id === movie.id) === -1) {
-      dispatch(addToFavourites(movie));
+    if (!favorites?.length || favorites?.findIndex((m) => m.id === movie.id) === -1) {
+      dispatch(addToFavorites(movie));
     } else {
-      dispatch(removeFromFavourites(movie.id));
+      dispatch(removeFromFavorites(movie.id));
     }
   };
 
-  const showList = movies.map((movie, index) => {
+  let showList = movies.map((movie, index) => {
     return (
       <Card
         key={index}
@@ -32,7 +32,7 @@ const ListCards = ({ title, movies, onLoadMore }) => {
         vote_average={movie.vote_average}
         release_date={movie.release_date}
         onLikeMovie={handleLikeMovie}
-        isLiked={favourites.findIndex((m) => m.id === movie.id) === -1 ? false : true}
+        isLiked={favorites?.findIndex((m) => m.id === movie.id) === -1 ? false : true}
       />
     );
   });
@@ -40,8 +40,12 @@ const ListCards = ({ title, movies, onLoadMore }) => {
   return (
     <>
       <h4 className="section_title">{title}</h4>
-      <div className="section_cards">{showList}</div>
-      <Button onClickHandler={onLoadMore}>Show more</Button>
+      {showList?.length ? (
+        <div className="section_cards">{showList}</div>
+      ) : (
+        <p>No movies to show</p>
+      )}
+      {showMore && <Button onClickHandler={onLoadMore}>Show more</Button>}
     </>
   );
 };

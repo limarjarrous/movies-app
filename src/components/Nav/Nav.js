@@ -50,8 +50,8 @@ const Nav = ({ onSearch }) => {
             </Link>
           </li>
           <li className="nav_li">
-            <Link to="/" onClick={closeMobileMenu}>
-              Trending
+            <Link to="/favourites" onClick={closeMobileMenu}>
+              My Favourite
             </Link>
           </li>
           <li className="nav_li">

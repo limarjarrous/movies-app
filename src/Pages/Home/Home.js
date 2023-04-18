@@ -77,8 +77,10 @@ const Home = () => {
             </aside>
             <section className="listcards_section">
               <ListCards
+                title="Top-rated Movies"
                 movies={filtered ? moviesByGenreList : moviesList}
                 onLoadMore={handleLoadMore}
+                showMore
               />
             </section>
           </div>
