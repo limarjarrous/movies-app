@@ -3,9 +3,9 @@ import {
   LOGOUT,
   ERROR,
   SIGNIN,
-  LOADING,
-  ADD_TO_FAVOURITES,
-  REMOVE_FROM_FAVOURITES,
+  USER_LOADING,
+  ADD_TO_FAVORITES,
+  REMOVE_FROM_FAVORITES,
 } from "../actions/actionTypes";
 
 const inititalState = {
@@ -13,27 +13,27 @@ const inititalState = {
   lastName: "",
   email: "",
   _id: "",
-  favourites: [],
+  favorites: [],
   error: null,
-  loading: false,
+  userLoading: false,
 };
 
 const userReducer = (state = inititalState, action) => {
   switch (action.type) {
-    case ADD_TO_FAVOURITES:
+    case ADD_TO_FAVORITES:
       return {
         ...state,
-        loading: false,
+        userLoading: false,
         error: null,
-        favourites: [...state.favourites, action.payload],
+        favorites: [...state.favorites, action.payload],
       };
-    case REMOVE_FROM_FAVOURITES:
-      const filtered = state.favourites.filter((m) => m.id !== action.payload);
+    case REMOVE_FROM_FAVORITES:
+      const filtered = state.favorites.filter((m) => m.id !== action.payload);
       return {
         ...state,
-        loading: false,
+        userLoading: false,
         error: null,
-        favourites: filtered,
+        favorites: filtered,
       };
     case SIGNIN:
       return {
@@ -42,7 +42,7 @@ const userReducer = (state = inititalState, action) => {
         lastName: action.payload.lastName,
         email: action.payload.email,
         _id: action.payload._id,
-        loading: false,
+        userLoading: false,
         error: null,
       };
     case SIGNUP:
@@ -52,7 +52,7 @@ const userReducer = (state = inititalState, action) => {
         lastName: action.payload.lastName,
         email: action.payload.email,
         _id: action.payload._id,
-        loading: false,
+        userLoading: false,
         error: null,
       };
     case LOGOUT:
@@ -64,15 +64,15 @@ const userReducer = (state = inititalState, action) => {
         email: null,
         _id: null,
         error: null,
-        loading: false,
+        userLoading: false,
       };
-    case LOADING:
+    case USER_LOADING:
       return {
         ...state,
-        loading: true,
+        userLoading: true,
       };
     case ERROR:
-      return { ...state, loading: false, error: action.payload };
+      return { ...state, userLoading: false, error: action.payload };
     default:
       return state;
   }

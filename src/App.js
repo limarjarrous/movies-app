@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from "react";
 import { SearchContext } from "./Contexts/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
 import Loader from "./components/Loader/Loader";
 import Nav from "./components/Nav/Nav";
 import "./App.css";
@@ -31,6 +32,7 @@ const App = () => {
           >
             <Routes>
               <Route exact path="/movies/:movieId" element={<MoviePage />} />
+              <Route exact path="/favourites" element={<FavoritesPage />} />
               <Route exact path="/auth" element={<Auth />} />
               <Route exact path="/" element={<Home />} />
             </Routes>

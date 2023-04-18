@@ -1,12 +1,12 @@
-export const LOADING = "LOADING";
 export const ERROR = "ERROR";
 
 // USER
 export const SIGNIN = "SIGNIN";
 export const SIGNUP = "SIGNUP";
 export const LOGOUT = "LOGOUT";
-export const ADD_TO_FAVOURITES = "ADD_TO_FAVOURITES";
-export const REMOVE_FROM_FAVOURITES = "REMOVE_FROM_FAVOURITES";
+export const USER_LOADING = "USER_LOADING";
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
+export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 
 // MOVIES
 export const MOVIES_BY_GENRE = "MOVIES_BY_GENRE";
@@ -20,3 +20,4 @@ export const SIMILAR = "SIMILAR";
 export const CREDITS = "CREDITS";
 export const VIDEOS = "VIDEOS";
 export const SEARCH = "SEARCH";
+export const LOADING = "LOADING";
