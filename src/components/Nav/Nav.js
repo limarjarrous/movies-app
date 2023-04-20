@@ -4,10 +4,10 @@ import { logout } from "../../redux/actions/userActions";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { BsSearch } from "react-icons/bs";
-import Avvvatars from "avvvatars-react";
 import Dropdown from "./Dropdown/Dropdown";
-import "./Nav.css";
+import Avvvatars from "avvvatars-react";
 import Button from "../Button/Button";
+import "./Nav.css";
 
 const Nav = ({ onSearch }) => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const Nav = ({ onSearch }) => {
       {/* BRAND */}
       <h2 className="brand">
         <Link to="/" onClick={closeMobileMenu}>
-          TV DataBase
+          MoviesDB
         </Link>
       </h2>
 
@@ -50,13 +50,13 @@ const Nav = ({ onSearch }) => {
             </Link>
           </li>
           <li className="nav_li">
-            <Link to="/favourites" onClick={closeMobileMenu}>
-              My Favourite
+            <Link to="/trending" onClick={closeMobileMenu}>
+              Trending
             </Link>
           </li>
           <li className="nav_li">
-            <Link to="/" onClick={closeMobileMenu}>
-              Contact us
+            <Link to="/favorites" onClick={closeMobileMenu}>
+              My Favorite
             </Link>
           </li>
         </ul>

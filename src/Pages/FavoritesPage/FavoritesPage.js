@@ -10,7 +10,7 @@ const FavoritesPage = () => {
   return (
     <>
       {loading && <Loader />}
-      {!loading && <ListCards title="My Favourite" movies={favorites} />}
+      {!loading && <ListCards title={"My Favorite".toUpperCase()} movies={favorites} />}
     </>
   );
 };
