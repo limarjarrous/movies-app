@@ -1,6 +1,8 @@
-import { useState, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { SearchContext } from "./Contexts/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { getGenres, getMovies, getTrending } from "./redux/actions/moviesActions";
 import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
 import Loader from "./components/Loader/Loader";
 import Nav from "./components/Nav/Nav";
@@ -11,7 +13,17 @@ const Auth = lazy(() => import("./Pages/Auth/Auth"));
 const MoviePage = lazy(() => import("./Pages/MoviePage/MoviePage"));
 
 const App = () => {
+  const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
+  const moviesList_CP = useSelector((state) => state.movies.moviesList.currentPage);
+
+  useEffect(() => {
+    dispatch(getGenres());
+    dispatch(getTrending("all", "week"));
+
+    const params = { page: moviesList_CP };
+    dispatch(getMovies("top_rated", { params }));
+  }, []);
 
   const handleSearch = (e, text) => {
     e.preventDefault();
