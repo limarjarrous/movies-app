@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/userActions";
 import { Link, useNavigate } from "react-router-dom";
+import NavDropdown from "../NavDropdown/NavDropdown";
+
 import { FaBars, FaTimes } from "react-icons/fa";
 import { BsSearch } from "react-icons/bs";
-import Dropdown from "./Dropdown/Dropdown";
-import Avvvatars from "avvvatars-react";
 import Button from "../Button/Button";
 import "./Nav.css";
 
@@ -80,10 +80,7 @@ const Nav = ({ onSearch }) => {
         {!isAuth ? (
           <Button onClickHandler={() => navigate("auth")}>Sign in</Button>
         ) : (
-          <div onClick={() => setOpen(!open)}>
-            <Avvvatars value={user?.firstName[0] + user?.lastName[0]} />
-            {open && <Dropdown onLogout={handleLogout} />}
-          </div>
+          <NavDropdown onLogout={handleLogout} user={user} />
         )}
       </div>
 

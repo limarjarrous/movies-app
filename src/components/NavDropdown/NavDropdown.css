@@ -1,0 +1,13 @@
+.MuiBox-root button {
+    padding: 0;
+}
+
+.MuiBox-root p {
+    font-size: .7rem;
+
+}
+
+.MuiList-root {
+    background-color: var(--text-grey-2);
+    min-width: 12em;
+}
