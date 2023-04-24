@@ -26,6 +26,7 @@ const ListCards = ({ title, movies, onLoadMore, showMore = false }) => {
     return (
       <Card
         key={index}
+        index={index}
         id={movie.id}
         title={movie.title}
         poster_path={movie.poster_path}
