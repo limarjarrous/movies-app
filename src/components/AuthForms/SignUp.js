@@ -25,9 +25,11 @@ const SignUp = ({ onSwitchForm }) => {
   });
 
   const handleNavigateToHome = () => {
-    if (localStorage.getItem("authenticated")) {
-      navigate("/");
-    }
+    setTimeout(() => {
+      if (localStorage.getItem("authenticated")) {
+        navigate(-1);
+      }
+    }, 2000);
   };
 
   return (
@@ -44,29 +46,19 @@ const SignUp = ({ onSwitchForm }) => {
         <div className="form_row">
           <label className="form_item">
             <p className="form_label">First Name</p>
-            <input
-              className="form_input"
-              {...register("firstName", { required: "First name is required" })}
-            />
+            <input className="form_input" {...register("firstName", { required: "First name is required" })} />
             <p className="validation_msg">{errors.firstName?.message}</p>
           </label>
           <label className="form_item">
             <p className="form_label">Last Name</p>
-            <input
-              className="form_input"
-              {...register("lastName", { required: "Last name is required" })}
-            />
+            <input className="form_input" {...register("lastName", { required: "Last name is required" })} />
             <p className="validation_msg">{errors.lastName?.message}</p>
           </label>
         </div>
 
         <label className="form_item">
           <p className="form_label">Email</p>
-          <input
-            className="form_input"
-            type="email"
-            {...register("email", { required: "Email is required" })}
-          />
+          <input className="form_input" type="email" {...register("email", { required: "Email is required" })} />
           <p className="validation_msg">{errors.email?.message}</p>
         </label>
 

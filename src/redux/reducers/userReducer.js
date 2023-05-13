@@ -36,6 +36,7 @@ const userReducer = (state = inititalState, action) => {
         favorites: filtered,
       };
     case SIGNIN:
+      localStorage.setItem("authenticated", true);
       return {
         ...state,
         firstName: action.payload.firstName,
@@ -46,6 +47,7 @@ const userReducer = (state = inititalState, action) => {
         error: null,
       };
     case SIGNUP:
+      localStorage.setItem("authenticated", true);
       return {
         ...state,
         firstName: action.payload.firstName,
@@ -56,7 +58,7 @@ const userReducer = (state = inititalState, action) => {
         error: null,
       };
     case LOGOUT:
-      localStorage.removeItem("authentecated");
+      localStorage.removeItem("authenticated");
       return {
         ...state,
         firstName: null,

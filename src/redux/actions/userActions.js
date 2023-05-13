@@ -1,12 +1,4 @@
-import {
-  SIGNIN,
-  SIGNUP,
-  LOGOUT,
-  ERROR,
-  LOADING,
-  ADD_TO_FAVORITES,
-  REMOVE_FROM_FAVORITES,
-} from "./actionTypes";
+import { SIGNIN, SIGNUP, LOGOUT, ERROR, USER_LOADING, ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "./actionTypes";
 import { auth, db } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { ref, set, onValue } from "firebase/database";
@@ -37,7 +29,7 @@ const handleError = (message) => {
 };
 const handleLoading = () => {
   return {
-    type: LOADING,
+    type: USER_LOADING,
   };
 };
 const handleAddToFavorites = (data) => {
@@ -68,7 +60,6 @@ export const signUpAction = (payload) => {
           _id: credentials.user.uid,
         };
         set(userRef(credentials.user.uid), user);
-        localStorage.setItem("authenticated", true);
         dispatch(handleSignUp(user));
       })
       .catch((error) => {
@@ -88,7 +79,6 @@ export const signInAction = (payload) => {
         onValue(userRef(credentials.user.uid), (snapshot) => {
           const user = snapshot.val();
           dispatch(handleSignIn(user));
-          localStorage.setItem("authenticated", true);
         });
       })
       .catch((error) => {
@@ -101,20 +91,18 @@ export const signInAction = (payload) => {
 export const logout = () => {
   return async (dispatch) => {
     signOut(auth);
-    localStorage.setItem("authenticated", false);
     dispatch(handleLogout());
   };
 };
 
 export const addToFavorites = (data) => {
   return async (dispatch) => {
-    // dispatch(handleLoading());
     dispatch(handleAddToFavorites(data));
   };
 };
+
 export const removeFromFavorites = (id) => {
   return async (dispatch) => {
-    // dispatch(handleLoading());
     dispatch(handleRemoveFromFavorites(id));
   };
 };

@@ -66,7 +66,7 @@ const NavDropdown = ({ user, onLogout }) => {
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>Settings</MenuItem>
-        <MenuItem onClick={() => onLogout()}>Logout</MenuItem>
+        <MenuItem onClick={onLogout}>Logout</MenuItem>
       </Menu>
     </React.Fragment>
   );

@@ -17,7 +17,7 @@ const Nav = ({ onSearch }) => {
   const closeMobileMenu = () => setMobileMenu(false);
   const handleClick = () => setMobileMenu(!mobileMenu);
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const user = useSelector((state) => state.user);
   const isAuth = localStorage.getItem("authenticated") === "true" || false;
@@ -28,8 +28,12 @@ const Nav = ({ onSearch }) => {
 
   const handleLogout = () => {
     dispatch(logout());
-    setOpen(false);
-    navigate("/");
+    setMobileMenu(false);
+  };
+
+  const handleAuth = () => {
+    setMobileMenu(false);
+    navigate("/auth");
   };
 
   return (
@@ -78,7 +82,7 @@ const Nav = ({ onSearch }) => {
 
         {/* AUTH */}
         {!isAuth ? (
-          <Button onClickHandler={() => navigate("auth")}>Sign in</Button>
+          <Button onClickHandler={handleAuth}>Sign in</Button>
         ) : (
           <NavDropdown onLogout={handleLogout} user={user} />
         )}
