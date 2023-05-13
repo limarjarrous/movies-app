@@ -82,9 +82,6 @@ const SignUp = ({ onSwitchForm }) => {
               </p>
             </div>
 
-            {/* <button className="sign_button" type="submit" value="Submit">
-        Register
-      </button> */}
             <Button className="sign_button" type="submit" value="Submit">
               Register
             </Button>

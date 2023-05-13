@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInAction } from "../../redux/actions/userActions";
 import Button from "../Button/Button";
@@ -10,7 +10,6 @@ import "./AuthForms.css";
 const SignIn = ({ onSwitchForm, message }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const user = useSelector((state) => state.user);
   const isLoading = useSelector((state) => state.user.userLoading);
