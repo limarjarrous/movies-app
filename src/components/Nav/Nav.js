@@ -13,14 +13,15 @@ const Nav = ({ onSearch }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [searchText, setSearchText] = useState("");
   const [mobileMenu, setMobileMenu] = useState(false);
+  const isAuth = useSelector((state) => (state.user._id !== null ? true : false));
+
+  const lastName = localStorage.getItem("lastName");
+  const firstName = localStorage.getItem("firstName");
+
   const closeMobileMenu = () => setMobileMenu(false);
   const handleClick = () => setMobileMenu(!mobileMenu);
-
-  // const [open, setOpen] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const user = useSelector((state) => state.user);
-  const isAuth = localStorage.getItem("authenticated") === "true" || false;
 
   const handleChangeText = (e) => {
     setSearchText(e.target.value);
@@ -84,7 +85,7 @@ const Nav = ({ onSearch }) => {
         {!isAuth ? (
           <Button onClickHandler={handleAuth}>Sign in</Button>
         ) : (
-          <NavDropdown onLogout={handleLogout} user={user} />
+          <NavDropdown onLogout={handleLogout} initials={firstName[0] + lastName[0]} />
         )}
       </div>
 

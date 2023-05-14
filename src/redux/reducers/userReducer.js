@@ -36,7 +36,9 @@ const userReducer = (state = inititalState, action) => {
         favorites: filtered,
       };
     case SIGNIN:
-      localStorage.setItem("authenticated", true);
+      localStorage.setItem("authenticated", "true");
+      localStorage.setItem("firstName", action.payload.firstName);
+      localStorage.setItem("lastName", action.payload.lastName);
       return {
         ...state,
         firstName: action.payload.firstName,
@@ -47,7 +49,9 @@ const userReducer = (state = inititalState, action) => {
         error: null,
       };
     case SIGNUP:
-      localStorage.setItem("authenticated", true);
+      localStorage.setItem("authenticated", "true");
+      localStorage.setItem("firstName", action.payload.firstName);
+      localStorage.setItem("lastName", action.payload.lastName);
       return {
         ...state,
         firstName: action.payload.firstName,
@@ -58,7 +62,9 @@ const userReducer = (state = inititalState, action) => {
         error: null,
       };
     case LOGOUT:
-      localStorage.removeItem("authenticated");
+      localStorage.setItem("authenticated", "false");
+      localStorage.setItem("firstName", "");
+      localStorage.setItem("lastName", "");
       return {
         ...state,
         firstName: null,

@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { signInAction } from "../../redux/actions/userActions";
+import { useSelector } from "react-redux";
 import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
 import "./AuthForms.css";
 
-const SignIn = ({ onSwitchForm, message }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+const SignIn = ({ onSwitchForm, onAuth, message }) => {
   const user = useSelector((state) => state.user);
   const isLoading = useSelector((state) => state.user.userLoading);
 
@@ -26,24 +21,13 @@ const SignIn = ({ onSwitchForm, message }) => {
     },
   });
 
-  useEffect(() => {
-    if (localStorage.getItem("authenticated")) {
-      navigate(-1);
-    }
-  }, [isLoading]);
-
   return (
     <>
       <div className="auth_container">
         {isLoading ? (
           <Loader />
         ) : (
-          <form
-            className="auth_form"
-            onSubmit={handleSubmit((data) => {
-              dispatch(signInAction(data));
-            })}
-          >
+          <form className="auth_form" onSubmit={handleSubmit((data) => onAuth(data))}>
             <h4 className="form_title">Sign in</h4>
             {user?.error?.message && <h6 className="auth_msg">Email and password you entered doesn't exist.</h6>}
             <label className="form_item">

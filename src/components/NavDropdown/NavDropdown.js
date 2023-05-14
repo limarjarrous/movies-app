@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import { Box, Menu, Divider, MenuItem, Tooltip } from "@mui/material";
 import "./NavDropdown.css";
 
-const NavDropdown = ({ user, onLogout }) => {
+const NavDropdown = ({ initials, onLogout }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -26,7 +26,7 @@ const NavDropdown = ({ user, onLogout }) => {
             aria-haspopup="true"
             sx={{ ml: 2 }}
           >
-            <Avvvatars name={`${user?.firstName} ${user?.lastName}`} />
+            <Avvvatars value={initials} />
           </IconButton>
         </Tooltip>
       </Box>
