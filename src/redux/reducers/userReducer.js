@@ -9,10 +9,10 @@ import {
 } from "../actions/actionTypes";
 
 const inititalState = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  _id: "",
+  firstName: null,
+  lastName: null,
+  email: null,
+  _id: null,
   favorites: [],
   error: null,
   userLoading: false,
