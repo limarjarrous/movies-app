@@ -11,6 +11,7 @@
     --text-grey-1: #1e1e1e;
     --text-grey-0: #121212;
     --text-error: #ff3a3a;
+    --footer-bg: #1a1919;
     --bg: #121212;
 }
 
@@ -66,7 +67,6 @@ img {
 }
 
 .app {
-    max-width: 1200px;
-    width: 90%;
+    max-width: 1500px;
     margin: 0 auto;
 }

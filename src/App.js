@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { SearchContext } from "./Contexts/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getGenres, getMovies, getTrending } from "./redux/actions/moviesActions";
-import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
-import TrendingPage from "./Pages/TrendingPage/TrendingPage";
 import Loader from "./components/Loader/Loader";
+import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
 import "./App.css";
 
 const Home = lazy(() => import("./Pages/Home/Home"));
 const Auth = lazy(() => import("./Pages/Auth/Auth"));
 const MoviePage = lazy(() => import("./Pages/MoviePage/MoviePage"));
+const TrendingPage = lazy(() => import("./Pages/TrendingPage/TrendingPage"));
+const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const App = () => {
               <Route exact path="/" element={<Home />} />
             </Routes>
           </Suspense>
+          <Footer />
         </div>
       </SearchContext.Provider>
     </Router>

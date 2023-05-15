@@ -1,14 +1,12 @@
 /* CAROUSEL */
 .carousel_container {
-    max-width: 89%;
-    margin: 0 auto 2em;
-
+    margin: 0 7em 2em;
 }
 
 @media (max-width:1110px) {
     .carousel_container {
         max-width: 100%;
-
+        margin: 0 auto 2em;
     }
 }
 
