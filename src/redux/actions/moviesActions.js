@@ -1,23 +1,37 @@
 import tmdbApi from "../../api/tmdbApi";
 import {
+  TOP_RATED_MOVIES,
+  UPCOMING_MOVIES,
   MOVIES_BY_GENRE,
   RECOMMENDATIONS,
-  MOVIES_LIST,
+  POPULAR_MOVIES,
   TRENDING,
   TV_LIST,
-  GENRES,
   DETAILS,
   SIMILAR,
   CREDITS,
+  LOADING,
+  GENRES,
+  ERROR,
   // VIDEOS,
   // SEARCH,
-  LOADING,
-  ERROR,
 } from "./actionTypes";
 
-const moviesList = (data) => {
+const topRatedMovies = (data) => {
   return {
-    type: MOVIES_LIST,
+    type: TOP_RATED_MOVIES,
+    payload: data,
+  };
+};
+const popularMovies = (data) => {
+  return {
+    type: POPULAR_MOVIES,
+    payload: data,
+  };
+};
+const upcomingMovies = (data) => {
+  return {
+    type: UPCOMING_MOVIES,
     payload: data,
   };
 };
@@ -100,9 +114,21 @@ export const getMovies = (type, params) => {
   return async (dispatch) => {
     dispatch(loading());
     let response = await tmdbApi.getMoviesList(type, params);
-    // console.log(response);
     if (response.status === 200) {
-      dispatch(moviesList(response.data));
+      switch (type) {
+        case "top_rated":
+          dispatch(topRatedMovies(response.data));
+          break;
+        case "upcoming":
+          dispatch(upcomingMovies(response.data));
+          break;
+        case "popular":
+          dispatch(popularMovies(response.data));
+          break;
+        default:
+          dispatch(upcomingMovies(response.data));
+          break;
+      }
     } else {
       dispatch(error(response.error));
     }

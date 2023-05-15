@@ -1,12 +1,12 @@
 .section_title {
-    margin-bottom: 2em;
+    padding: 0 .5em;
+    margin-bottom: 1em;
     color: var(--text-white);
 }
 
 .section_cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 1em;
     margin-bottom: 3em;
 }

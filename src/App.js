@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { SearchContext } from "./Contexts/Context";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getGenres, getMovies, getTrending } from "./redux/actions/moviesActions";
 import Loader from "./components/Loader/Loader";
@@ -17,14 +17,20 @@ const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
 const App = () => {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
-  const moviesList_CP = useSelector((state) => state.movies.moviesList.currentPage);
+  const popularMovies_CP = useSelector((state) => state.movies.popularMovies.currentPage);
+  const upcomingMovies_CP = useSelector((state) => state.movies.upcomingMovies.currentPage);
+  const topRatedMovies_CP = useSelector((state) => state.movies.topRatedMovies.currentPage);
 
   useEffect(() => {
     dispatch(getGenres());
-    dispatch(getTrending("all", "week"));
+    dispatch(getTrending("movie", "week"));
 
-    const params = { page: moviesList_CP };
+    let params = { page: topRatedMovies_CP };
     dispatch(getMovies("top_rated", { params }));
+    params = { page: upcomingMovies_CP };
+    dispatch(getMovies("upcoming", { params }));
+    params = { page: popularMovies_CP };
+    dispatch(getMovies("popular", { params }));
   }, []);
 
   const handleSearch = (e, text) => {

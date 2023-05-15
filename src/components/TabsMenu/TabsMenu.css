@@ -1,0 +1,17 @@
+.menu_tabList {
+    margin-bottom: 1em;
+    font-size: 1.1rem;
+    display: flex;
+    gap: 1em;
+}
+
+.menu_tab {
+    background-color: transparent;
+    color: var(--text-grey-9);
+}
+
+.MuiTab-root.Mui-selected {
+    color: aliceblue;
+    background-color: var(--text-grey-2);
+
+}

@@ -1,21 +1,35 @@
 import {
-  MOVIES_BY_GENRE,
+  TOP_RATED_MOVIES,
+  UPCOMING_MOVIES,
   RECOMMENDATIONS,
-  MOVIES_LIST,
+  MOVIES_BY_GENRE,
+  POPULAR_MOVIES,
   TRENDING,
   TV_LIST,
-  GENRES,
   DETAILS,
   SIMILAR,
   CREDITS,
+  LOADING,
+  GENRES,
   VIDEOS,
   SEARCH,
-  LOADING,
   ERROR,
 } from "../actions/actionTypes";
 
 const initialState = {
-  moviesList: {
+  topRatedMovies: {
+    currentPage: 1,
+    total_pages: null,
+    total_results: null,
+    results: [],
+  },
+  popularMovies: {
+    currentPage: 1,
+    total_pages: null,
+    total_results: null,
+    results: [],
+  },
+  upcomingMovies: {
     currentPage: 1,
     total_pages: null,
     total_results: null,
@@ -63,16 +77,51 @@ const initialState = {
 
 const moviesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case MOVIES_LIST:
+    case TOP_RATED_MOVIES:
       return {
         ...state,
         loading: false,
-        moviesList: {
-          ...state.moviesList,
-          currentPage: state.moviesList.currentPage + 1,
+        topRatedMovies: {
+          ...state.topRatedMovies,
+          currentPage: state.topRatedMovies.currentPage + 1,
           total_pages: action.payload.total_pages,
           total_results: action.payload.total_results,
-          results: [...state.moviesList.results, ...action.payload.results],
+          results: [...state.topRatedMovies.results, ...action.payload.results],
+        },
+      };
+    case UPCOMING_MOVIES:
+      return {
+        ...state,
+        loading: false,
+        upcomingMovies: {
+          ...state.upcomingMovies,
+          currentPage: state.upcomingMovies.currentPage + 1,
+          total_pages: action.payload.total_pages,
+          total_results: action.payload.total_results,
+          results: [...state.upcomingMovies.results, ...action.payload.results],
+        },
+      };
+    case POPULAR_MOVIES:
+      return {
+        ...state,
+        loading: false,
+        popularMovies: {
+          ...state.popularMovies,
+          currentPage: state.popularMovies.currentPage + 1,
+          total_pages: action.payload.total_pages,
+          total_results: action.payload.total_results,
+          results: [...state.popularMovies.results, ...action.payload.results],
+        },
+      };
+    case RECOMMENDATIONS:
+      return {
+        ...state,
+        loading: false,
+        recommendationList: {
+          ...state.recommendationList,
+          total_pages: action.payload.total_pages,
+          total_results: action.payload.total_results,
+          results: action.payload.results,
         },
       };
     case TRENDING:
@@ -123,17 +172,6 @@ const moviesReducer = (state = initialState, action) => {
         loading: false,
         similarList: {
           ...state.similarList,
-          total_pages: action.payload.total_pages,
-          total_results: action.payload.total_results,
-          results: action.payload.results,
-        },
-      };
-    case RECOMMENDATIONS:
-      return {
-        ...state,
-        loading: false,
-        recommendationList: {
-          ...state.recommendationList,
           total_pages: action.payload.total_pages,
           total_results: action.payload.total_results,
           results: action.payload.results,
