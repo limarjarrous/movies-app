@@ -69,4 +69,12 @@ img {
 .app {
     max-width: 1500px;
     margin: 0 auto;
+
+    /* for placing the Footer */
+    position: relative;
+    min-height: 100vh;
+}
+
+.page_content {
+    padding-bottom: 14rem;
 }

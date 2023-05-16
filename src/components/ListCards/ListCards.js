@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import Card from "../Card/Card";
 import "./ListCards.css";
 
-const ListCards = ({ movies, onLoadMore, showMore = false }) => {
+const ListCards = ({ movies, onLoadMore, showMore = false, title = null }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.user.favorites);
 
@@ -40,6 +40,7 @@ const ListCards = ({ movies, onLoadMore, showMore = false }) => {
 
   return (
     <>
+      <h4 className="section_title">{title}</h4>
       {showList?.length ? <div className="section_cards">{showList}</div> : <p>No movies to show</p>}
       {showMore && <Button onClickHandler={onLoadMore}>Show more</Button>}
     </>

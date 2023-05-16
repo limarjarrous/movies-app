@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ListCards from "../../components/ListCards/ListCards";
 import { getTrending } from "../../redux/actions/moviesActions";
 import { useDispatch, useSelector } from "react-redux";
+import "./TrendingPage.css";
 
 const TrendingPage = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,7 @@ const TrendingPage = () => {
 
   return (
     <section className="listcards_section">
-      <ListCards
-        title={`Trending this ${timeWindow}`.toUpperCase()}
-        movies={trendingList}
-        showMore={false}
-      />
+      <ListCards title={`Trending this ${timeWindow}`.toUpperCase()} movies={trendingList} showMore={false} />
     </section>
   );
 };

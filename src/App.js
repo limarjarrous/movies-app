@@ -50,13 +50,15 @@ const App = () => {
               </div>
             }
           >
-            <Routes>
-              <Route exact path="/movies/:movieId" element={<MoviePage />} />
-              <Route exact path="/favorites" element={<FavoritesPage />} />
-              <Route exact path="/trending" element={<TrendingPage />} />
-              <Route exact path="/auth" element={<Auth />} />
-              <Route exact path="/" element={<Home />} />
-            </Routes>
+            <div className="page_content">
+              <Routes>
+                <Route exact path="/movies/:movieId" element={<MoviePage />} />
+                <Route exact path="/favorites" element={<FavoritesPage />} />
+                <Route exact path="/trending" element={<TrendingPage />} />
+                <Route exact path="/auth" element={<Auth />} />
+                <Route exact path="/" element={<Home />} />
+              </Routes>
+            </div>
           </Suspense>
           <Footer />
         </div>
