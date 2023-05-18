@@ -14,17 +14,25 @@ const Card = ({ id, index, title, vote_average, release_date, poster_path, isLik
     navigate(`/movies/${id}`);
   };
 
+  const variants = {
+    active: { opacity: 1 },
+    inactive: { opacity: 0 },
+  };
+  const transition = {
+    duration: 0.8,
+    delay: 0.05 * (index % 20),
+    ease: "easeInOut",
+  };
+
   return (
     <LazyMotion features={domAnimation}>
       <m.div
         className="card_container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.8,
-          delay: 0.1 * (index % 20),
-          ease: "easeInOut",
-        }}
+        variants={variants}
+        initial="inactive"
+        animate="active"
+        exit="inactive"
+        transition={transition}
       >
         <img
           className="card_img"

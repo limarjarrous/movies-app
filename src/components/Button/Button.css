@@ -7,12 +7,12 @@ button {
     padding: .4em 1em;
     border-radius: 5px;
     color: var(--text-grey-c);
-    background-color: var(--text-grey-2);
+    background-color: var(--text-grey-3);
 }
 
 button:hover,
 button:focus {
-    background-color: var(--text-grey-3);
+    background-color: var(--text-grey-5);
 }
 
 

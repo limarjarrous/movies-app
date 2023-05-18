@@ -43,6 +43,7 @@ const App = () => {
     <Router>
       <SearchContext.Provider value={searchText}>
         <div className="app">
+          <div className="main_background"></div>
           <Nav onSearch={handleSearch} />
           <Suspense
             fallback={

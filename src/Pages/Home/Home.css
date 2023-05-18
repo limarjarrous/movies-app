@@ -1,7 +1,6 @@
 .home_container {
-    margin: 0 auto 3em;
+    margin: 0 auto;
     padding: 0 3em;
-    background-color: var(--bg);
 }
 
 .main_section {

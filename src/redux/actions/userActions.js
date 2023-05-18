@@ -50,7 +50,7 @@ const userRef = (id) => ref(db, `/users/${id}`);
 
 export const signUpAction = (payload) => {
   const { firstName, lastName, email, password } = payload;
-  const toastId = toast.loading("Working on it...");
+  const toastId = toast.loading("Signing up...");
   return async (dispatch) => {
     dispatch(handleLoading());
     await createUserWithEmailAndPassword(auth, email, password)
@@ -80,7 +80,7 @@ export const signUpAction = (payload) => {
 
 export const signInAction = (payload) => {
   const { email, password } = payload;
-  const toastId = toast.loading("Working on it...");
+  const toastId = toast.loading("Logging in...");
   return async (dispatch) => {
     dispatch(handleLoading());
     await signInWithEmailAndPassword(auth, email, password)

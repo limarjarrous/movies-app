@@ -29,7 +29,7 @@ const SignIn = ({ onSwitchForm, onAuth, message }) => {
         ) : (
           <form className="auth_form" onSubmit={handleSubmit((data) => onAuth(data))}>
             <h4 className="form_title">Sign in</h4>
-            {user?.error?.message && <h6 className="auth_msg">Email and password you entered doesn't exist.</h6>}
+            {user?.error?.message && <h6 className="auth_msg">Email and password are invalid or don't exist.</h6>}
             <label className="form_item">
               <p className="form_label">Email</p>
               <input className="form_input" {...register("email", { required: "Email is required" })} />
@@ -47,10 +47,10 @@ const SignIn = ({ onSwitchForm, onAuth, message }) => {
             </label>
 
             <div className="switch_form">
-              <p className="switch_form_msg">Forgot your password?</p>
               <p className="switch_form_msg" onClick={onSwitchForm}>
                 Register new account
               </p>
+              <p className="switch_form_msg">Forgot your password?</p>
             </div>
 
             <Button className="sign_button" type="submit" value="Submit">

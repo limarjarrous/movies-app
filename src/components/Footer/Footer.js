@@ -1,6 +1,5 @@
 import React from "react";
 import { GrInstagram, GrTwitter, GrFacebook } from "react-icons/gr";
-import Divider from "@mui/material/Divider";
 import "./Footer.css";
 
 function Footer() {
@@ -67,9 +66,12 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <Divider className="footer_divider" />
       <div className="rights">
-        <p>C 2023 • All Rights Reserved</p>
+        <div className="copyrights">
+          <img className="tmdb_logo" src="./assets/images/tmdb.svg" />
+          <p>This product uses the TMDB API but is not endorsed or certified by TMDB</p>
+        </div>
+        <p>&copy; All Rights Reserved • {new Date().getFullYear()}</p>
       </div>
     </footer>
   );
