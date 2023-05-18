@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getGenres, getMovies, getTrending } from "./redux/actions/moviesActions";
 import Loader from "./components/Loader/Loader";
 import Footer from "./components/Footer/Footer";
+import Toast from "./components/Toast/Toast";
 import Nav from "./components/Nav/Nav";
 import "./App.css";
 
@@ -61,6 +62,7 @@ const App = () => {
             </div>
           </Suspense>
           <Footer />
+          <Toast />
         </div>
       </SearchContext.Provider>
     </Router>

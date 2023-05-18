@@ -1,8 +1,9 @@
 import { SIGNIN, SIGNUP, LOGOUT, ERROR, USER_LOADING, ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "./actionTypes";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { ref, set, onValue } from "firebase/database";
 import { auth, db } from "../../firebase";
 import { signOut } from "firebase/auth";
-import { ref, set, onValue } from "firebase/database";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-hot-toast";
 
 const handleSignIn = (data) => {
   return {
@@ -49,6 +50,7 @@ const userRef = (id) => ref(db, `/users/${id}`);
 
 export const signUpAction = (payload) => {
   const { firstName, lastName, email, password } = payload;
+  const toastId = toast.loading("Working on it...");
   return async (dispatch) => {
     dispatch(handleLoading());
     await createUserWithEmailAndPassword(auth, email, password)
@@ -61,16 +63,24 @@ export const signUpAction = (payload) => {
         };
         set(userRef(credentials.user.uid), user);
         dispatch(handleSignUp(user));
+        toast(`Welcome ${user.firstName.toUpperCase()}!`, {
+          id: toastId,
+          icon: "🔥",
+        });
       })
       .catch((error) => {
         console.log(error.message);
         dispatch(handleError(error.code));
+        toast.error("Sorry, something went wrong!", {
+          id: toastId,
+        });
       });
   };
 };
 
 export const signInAction = (payload) => {
   const { email, password } = payload;
+  const toastId = toast.loading("Working on it...");
   return async (dispatch) => {
     dispatch(handleLoading());
     await signInWithEmailAndPassword(auth, email, password)
@@ -79,11 +89,18 @@ export const signInAction = (payload) => {
         onValue(userRef(credentials.user.uid), (snapshot) => {
           const user = snapshot.val();
           dispatch(handleSignIn(user));
+          toast(`Welcome back ${user.firstName.toUpperCase()}!`, {
+            id: toastId,
+            icon: "👋",
+          });
         });
       })
       .catch((error) => {
-        console.log(error.code);
+        // console.log(error.code);
         dispatch(handleError(error.code));
+        toast.error("Sorry, something went wrong!", {
+          id: toastId,
+        });
       });
   };
 };
@@ -92,17 +109,30 @@ export const logout = () => {
   return async (dispatch) => {
     signOut(auth);
     dispatch(handleLogout());
+    toast(`Bis bald!`, {
+      icon: "🙋‍♂️",
+    });
   };
 };
 
 export const addToFavorites = (data) => {
   return async (dispatch) => {
     dispatch(handleAddToFavorites(data));
+    toast.success(
+      <p>
+        <span style={{ color: "aliceblue" }}>{data.title}</span> was added to favorites
+      </p>
+    );
   };
 };
 
-export const removeFromFavorites = (id) => {
+export const removeFromFavorites = (data) => {
   return async (dispatch) => {
-    dispatch(handleRemoveFromFavorites(id));
+    dispatch(handleRemoveFromFavorites(data.id));
+    toast.success(
+      <p>
+        <span style={{ color: "aliceblue" }}>{data.title}</span> was removed from favorites
+      </p>
+    );
   };
 };

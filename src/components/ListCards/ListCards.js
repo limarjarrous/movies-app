@@ -18,7 +18,7 @@ const ListCards = ({ movies, onLoadMore, showMore = false, title = null }) => {
     if (!favorites?.length || favorites?.findIndex((m) => m.id === movie.id) === -1) {
       dispatch(addToFavorites(movie));
     } else {
-      dispatch(removeFromFavorites(movie.id));
+      dispatch(removeFromFavorites(movie));
     }
   };
 
