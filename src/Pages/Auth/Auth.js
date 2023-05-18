@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SignIn from "../../components/AuthForms/SignIn";
@@ -18,18 +18,18 @@ const Auth = () => {
     setchooseForm(!chooseForm);
   };
 
+  useEffect(() => {
+    if (user?._id !== null) {
+      navigate(-1);
+    }
+  }, [user]);
+
   const handleSignIn = (data) => {
     dispatch(signInAction(data));
-    setTimeout(() => {
-      if (user._id !== null) navigate(-1);
-    }, 1000);
   };
 
   const handleSignUp = (data) => {
     dispatch(signUpAction(data));
-    setTimeout(() => {
-      if (user._id !== null) navigate(-1);
-    }, 1000);
   };
 
   return (
