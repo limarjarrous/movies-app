@@ -7,44 +7,32 @@ function Footer() {
     <footer className="footer">
       <div className="footer_links">
         <div className="footer_col">
-          <p>PROFILE</p>
+          <p>PAGES</p>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/trending">Trending</a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="footer_col">
+          <p>CUSTOMERS</p>
           <ul>
             <li>
               <a href="/">FAQs</a>
             </li>
             <li>
-              <a href="/">Pricing plans</a>
-            </li>
-            <li>
-              <a href="/">Order tracking</a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer_col">
-          <p>RECENT POSTS</p>
-          <ul>
-            <li>
-              <a href="/">Touch of uniqueness</a>
-            </li>
-            <li>
-              <a href="/">Offices you won't forget</a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer_col">
-          <p>CUSTOMERS</p>
-          <ul>
-            <li>
               <a href="/">Help & contact us</a>
-            </li>
-            <li>
-              <a href="/">Online stores</a>
             </li>
             <li>
               <a href="/">Terms & conditions</a>
             </li>
           </ul>
         </div>
+
         <div className="footer_col">
           <p>CONTACT</p>
           <ul className="footer_social">
@@ -66,9 +54,12 @@ function Footer() {
           </ul>
         </div>
       </div>
+
       <div className="rights">
         <div className="copyrights">
-          <img className="tmdb_logo" src="./assets/images/tmdb.svg" />
+          <a href="https://www.themoviedb.org/">
+            <img className="tmdb_logo" src="./assets/images/tmdb.svg" />
+          </a>
           <p>This product uses the TMDB API but is not endorsed or certified by TMDB</p>
         </div>
         <p>&copy; All Rights Reserved • {new Date().getFullYear()}</p>
