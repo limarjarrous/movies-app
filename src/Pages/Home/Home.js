@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovies, getMoviesByGenre } from "../../redux/actions/moviesActions";
+import ListCards from "../../components/ListCards/ListCards";
 import TabsMenu from "../../components/TabsMenu/TabsMenu";
 import Carousel from "../../components/Carousel/Carousel";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -77,20 +78,22 @@ const Home = () => {
           />
         </aside>
         <section className="listcards_section">
-          <TabsMenu
-            movies={
-              filtered
-                ? moviesByGenreList.results
-                : tab === "upcoming"
-                ? upcomingMovies.results
-                : tab === "popular"
-                ? popularMovies.results
-                : topRatedMovies.results
-            }
-            onLoadMore={handleLoadMore}
-            onSelectTab={handleSelectTab}
-            showMore
-          />
+          {!filtered ? (
+            <TabsMenu
+              movies={
+                tab === "upcoming"
+                  ? upcomingMovies.results
+                  : tab === "popular"
+                  ? popularMovies.results
+                  : topRatedMovies.results
+              }
+              onLoadMore={handleLoadMore}
+              onSelectTab={handleSelectTab}
+              showMore
+            />
+          ) : (
+            <ListCards movies={moviesByGenreList?.results} showMore onLoadMore={handleLoadMore} />
+          )}
         </section>
       </div>
     </div>
