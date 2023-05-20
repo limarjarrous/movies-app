@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovies, getMoviesByGenre } from "../../redux/actions/moviesActions";
-import ListCards from "../../components/ListCards/ListCards";
+import CustomDrawer from "../../components/Drawer/CustomDrawer";
 import TabsMenu from "../../components/TabsMenu/TabsMenu";
 import Carousel from "../../components/Carousel/Carousel";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -10,8 +10,9 @@ import "./Home.css";
 const Home = () => {
   const dispatch = useDispatch();
 
-  let [tab, setTab] = useState("upcoming");
-  let [filtered, setFiltered] = useState(false);
+  const [tab, setTab] = useState("upcoming");
+  const [isOpen, setIsOpen] = useState(false);
+  const [filtered, setFiltered] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
 
   const genresList = useSelector((state) => state.movies.genresList);
@@ -32,6 +33,7 @@ const Home = () => {
     const params = { page: moviesByGenreList.currentPage, with_genres: selectedGenres };
     dispatch(getMoviesByGenre({ params }));
     setFiltered(selectedGenres.length ? true : false);
+    setIsOpen(false);
   };
 
   const handleLoadMore = () => {
@@ -65,35 +67,39 @@ const Home = () => {
     setTab(selectedTab);
   };
 
+  const handleToggleGenresFilter = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="home_container">
       <Carousel trendingList={trendingList.results} />
       <div className="main_section">
-        <aside className="sidebar">
-          <Sidebar
-            genresList={genresList}
-            selectedGenres={selectedGenres}
-            onSelectGenre={handleSelectGenre}
-            onFilterByGenre={handleFilterByGenre}
-          />
-        </aside>
         <section className="listcards_section">
-          {!filtered ? (
-            <TabsMenu
-              movies={
-                tab === "upcoming"
-                  ? upcomingMovies.results
-                  : tab === "popular"
-                  ? popularMovies.results
-                  : topRatedMovies.results
-              }
-              onLoadMore={handleLoadMore}
-              onSelectTab={handleSelectTab}
-              showMore
+          <CustomDrawer isOpen={isOpen} handleToggle={handleToggleGenresFilter}>
+            <Sidebar
+              genresList={genresList}
+              selectedGenres={selectedGenres}
+              onSelectGenre={handleSelectGenre}
+              onFilterByGenre={handleFilterByGenre}
             />
-          ) : (
-            <ListCards movies={moviesByGenreList?.results} showMore onLoadMore={handleLoadMore} />
-          )}
+          </CustomDrawer>
+          <TabsMenu
+            movies={
+              filtered
+                ? moviesByGenreList?.results
+                : tab === "upcoming"
+                ? upcomingMovies.results
+                : tab === "popular"
+                ? popularMovies.results
+                : topRatedMovies.results
+            }
+            onLoadMore={handleLoadMore}
+            onSelectTab={handleSelectTab}
+            handleToggle={handleToggleGenresFilter}
+            filtered={filtered}
+            showMore
+          />
         </section>
       </div>
     </div>
