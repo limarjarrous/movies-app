@@ -6,12 +6,26 @@
 }
 
 .menu_tab {
+    font-size: 0.8em;
+}
+
+.MuiTab-root.menu_tab {
     background-color: transparent;
     color: var(--text-grey-9);
+    transition: all .2s ease;
+}
+
+.MuiTab-root.menu_tab:hover {
+    background-color: var(--text-grey-2);
 }
 
 .MuiTab-root.Mui-selected {
     color: aliceblue;
-    background-color: var(--text-grey-2);
+    background-color: var(--text-grey-3);
 
+}
+
+.MuiTab-root.Mui-selected:hover {
+    color: aliceblue;
+    background-color: var(--text-grey-3);
 }

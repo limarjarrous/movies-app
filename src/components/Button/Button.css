@@ -4,6 +4,7 @@
 }
 
 button {
+    font-size: 0.9em;
     padding: .4em 1em;
     border-radius: 5px;
     color: var(--text-grey-c);

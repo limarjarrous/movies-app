@@ -83,7 +83,9 @@ const Nav = ({ onSearch }) => {
 
         {/* AUTH */}
         {!isAuth ? (
-          <Button onClickHandler={handleAuth}>Sign in</Button>
+          <Button onClickHandler={handleAuth} align="end">
+            Sign in
+          </Button>
         ) : (
           <NavDropdown onLogout={handleLogout} initials={firstName[0] + lastName[0]} />
         )}
