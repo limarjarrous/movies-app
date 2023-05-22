@@ -1,6 +1,6 @@
 .details_page_container {
-    max-width: 90%;
     margin: 0 auto;
+    padding: 0 3em;
 
     display: flex;
     flex-direction: column;
@@ -36,11 +36,7 @@
 
 .movie_banner_title h1 {
     color: var(--text-white);
-    font-size: 5vw;
-}
-
-.movie_banner_title p {
-    color: var(--text-white);
+    font-size: 4vw;
 }
 
 

@@ -1,38 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useInView } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { BsStarFill } from "react-icons/bs";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { LazyMotion, domAnimation, m } from "framer-motion";
+import { BsStarFill } from "react-icons/bs";
 import apiConfig from "../../api/apiConfig";
 import "./Card.css";
 
-const Card = ({ id, index, title, vote_average, release_date, poster_path, isLiked, onLikeMovie }) => {
+const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onLikeMovie }) => {
   const movie = { id, title, vote_average, release_date, poster_path };
+
+  const cardRref = useRef(null);
+  const isInView = useInView(cardRref);
+
   const navigate = useNavigate();
 
   const handleClickMovie = (id) => {
     navigate(`/movies/${id}`);
   };
 
-  const variants = {
-    active: { opacity: 1 },
-    inactive: { opacity: 0 },
-  };
-  const transition = {
-    duration: 0.8,
-    delay: 0.05 * (index % 20),
-    ease: "easeInOut",
-  };
-
   return (
-    <LazyMotion features={domAnimation}>
-      <m.div
+    <>
+      <div
+        ref={cardRref}
         className="card_container"
-        variants={variants}
-        initial="inactive"
-        animate="active"
-        exit="inactive"
-        transition={transition}
+        style={{
+          transform: isInView ? "none" : "translateY(75px)",
+          opacity: isInView ? 1 : 0,
+          transition: `transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1),
+                       opacity 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)`,
+        }}
       >
         <img
           className="card_img"
@@ -62,8 +58,8 @@ const Card = ({ id, index, title, vote_average, release_date, poster_path, isLik
             <FaRegHeart style={{ color: "#828282", fontSize: "1.1rem" }} />
           )}
         </span>
-      </m.div>
-    </LazyMotion>
+      </div>
+    </>
   );
 };
 
