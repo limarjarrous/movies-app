@@ -3,7 +3,7 @@
     padding: 3em;
     display: grid;
     place-items: center;
-    background-image: url('../../../public/assets/images/bg.jpg');
+    background-image: url('../../assets/images/bg.jpg');
     background-repeat: repeat;
     background-size: contain;
 }

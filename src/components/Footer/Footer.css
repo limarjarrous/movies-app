@@ -64,7 +64,8 @@
 }
 
 .footer li,
-.rights p {
+.rights p,
+.rights a {
     color: var(--text-grey-7);
 }
 

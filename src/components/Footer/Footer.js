@@ -1,5 +1,6 @@
 import React from "react";
 import { GrInstagram, GrTwitter, GrFacebook } from "react-icons/gr";
+import tmdbLogo from "../../assets/images/tmdb.png";
 import "./Footer.css";
 
 function Footer() {
@@ -57,8 +58,8 @@ function Footer() {
 
       <div className="rights">
         <div className="copyrights">
-          <a href="https://www.themoviedb.org/">
-            <img className="tmdb_logo" src="./assets/images/tmdb.svg" />
+          <a className="tmdb_logo" href="https://www.themoviedb.org/">
+            <img src={tmdbLogo} alt="tmdb" />
           </a>
           <p>This product uses the TMDB API but is not endorsed or certified by TMDB</p>
         </div>

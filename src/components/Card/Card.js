@@ -18,6 +18,13 @@ const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onL
     navigate(`/movies/${id}`);
   };
 
+  const handleImageError = (e) => {
+    const w = e.target.width;
+    const h = e.target.height;
+    const placeholderImage = `https://placehold.co/${w}x${h}?text=Image+not+found`;
+    e.target.src = placeholderImage;
+  };
+
   return (
     <>
       <div
@@ -32,6 +39,7 @@ const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onL
       >
         <img
           className="card_img"
+          onError={handleImageError}
           onClick={() => handleClickMovie(id)}
           src={apiConfig.originalImage(poster_path)}
           alt={title}

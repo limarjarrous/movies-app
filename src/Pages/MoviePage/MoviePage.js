@@ -2,12 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
-import {
-  getCredits,
-  getDetails,
-  getRecommendations,
-  getSimilar,
-} from "../../redux/actions/moviesActions";
+import { getCredits, getDetails, getRecommendations, getSimilar } from "../../redux/actions/moviesActions";
 import apiConfig from "../../api/apiConfig";
 import Slider from "../../components/Slider/Slider";
 import Loader from "../../components/Loader/Loader";
@@ -31,6 +26,13 @@ const MoviePage = () => {
   const { directors, cast } = useSelector((state) => state.movies.credits);
   const recommendationList = useSelector((state) => state.movies.recommendationList.results);
 
+  const handleImageError = (e) => {
+    const w = e.target.width;
+    const h = e.target.height;
+    const placeholderImage = `https://placehold.co/${w}x${h}?text=Image+not+found`;
+    e.target.src = placeholderImage;
+  };
+
   return (
     <>
       {loading ? (
@@ -42,7 +44,8 @@ const MoviePage = () => {
             <img
               className="movie_banner_img"
               src={apiConfig.originalImage(details?.backdrop_path)}
-              alt="john wick"
+              onError={handleImageError}
+              alt={details?.title}
             />
             <div className="movie_banner_title">
               <h1 className="">{details?.title}</h1>
@@ -55,6 +58,7 @@ const MoviePage = () => {
             <img
               className="movie_poster"
               src={apiConfig.originalImage(details?.poster_path)}
+              onError={handleImageError}
               alt={details?.title}
             />
             <div className="info_details">
@@ -65,11 +69,7 @@ const MoviePage = () => {
               <p className="info_year">{details?.release_date?.split("-")[0]}</p>
               <div className="info_genres">
                 {details?.genres?.map((genre, index) => {
-                  return (
-                    <span key={index}>{`${genre?.name}${
-                      index === details.genres.length - 1 ? "" : ", "
-                    }`}</span>
-                  );
+                  return <span key={index}>{`${genre?.name}${index === details.genres.length - 1 ? "" : ", "}`}</span>;
                 })}
               </div>
             </div>
@@ -80,18 +80,10 @@ const MoviePage = () => {
                 <div className="cast_content">
                   {cast.length < 10
                     ? cast.map((member, index) => {
-                        return (
-                          <span key={index}>{`${member?.original_name} ${
-                            index === 9 ? "" : " • "
-                          }`}</span>
-                        );
+                        return <span key={index}>{`${member?.original_name} ${index === 9 ? "" : " • "}`}</span>;
                       })
                     : cast.slice(0, 10).map((member, index) => {
-                        return (
-                          <span key={index}>{`${member?.original_name} ${
-                            index === 9 ? "" : " • "
-                          }`}</span>
-                        );
+                        return <span key={index}>{`${member?.original_name} ${index === 9 ? "" : " • "}`}</span>;
                       })}
                 </div>
               </div>
