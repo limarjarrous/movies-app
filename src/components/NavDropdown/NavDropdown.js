@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Avvvatars from "avvvatars-react";
+import { Box, Menu, Divider, MenuItem, ListItemText, ListItemIcon } from "@mui/material";
+import { FiSettings, FiUser } from "react-icons/fi";
+import { AiOutlinePoweroff } from "react-icons/ai";
 import IconButton from "@mui/material/IconButton";
-import { Box, Menu, Divider, MenuItem, Tooltip } from "@mui/material";
 import ToolTip from "../Tooltip/Tooltip";
+import Avvvatars from "avvvatars-react";
 import "./NavDropdown.css";
 
 const NavDropdown = ({ initials, onLogout }) => {
@@ -63,11 +65,27 @@ const NavDropdown = ({ initials, onLogout }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <FiUser style={{ color: "var(--text-grey-9)" }} />
+          </ListItemIcon>
+          <ListItemText>Profile</ListItemText>
+        </MenuItem>
+
         <Divider />
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
-        <MenuItem onClick={onLogout}>Logout</MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <FiSettings style={{ color: "var(--text-grey-9)" }} />
+          </ListItemIcon>
+          <ListItemText>Settings</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={onLogout}>
+          <ListItemIcon>
+            <AiOutlinePoweroff style={{ color: "var(--text-grey-9)" }} />
+          </ListItemIcon>
+          <ListItemText>Logout</ListItemText>
+        </MenuItem>
       </Menu>
     </React.Fragment>
   );

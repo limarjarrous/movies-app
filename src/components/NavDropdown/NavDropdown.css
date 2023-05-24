@@ -1,13 +1,17 @@
+.MuiList-root {
+    background-color: var(--text-grey-2);
+    min-width: 12em;
+}
+
 .MuiBox-root button {
     padding: 0;
+}
+
+.MuiList-root li:hover {
+    background-color: var(--text-grey-3);
 }
 
 .MuiBox-root p {
     font-size: .7rem;
 
-}
-
-.MuiList-root {
-    background-color: var(--text-grey-2);
-    min-width: 12em;
 }
