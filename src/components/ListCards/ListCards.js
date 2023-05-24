@@ -77,7 +77,7 @@ const ListCards = ({ movies, onLoadMore, showMore = false, title = null }) => {
           <Button onClickHandler={onLoadMore}>Show more</Button>
         </div>
       )}
-      {showTopBtn && <ToTop onScrollTop={scrollTop} />}
+      <ToTop showBtn={showTopBtn} onScrollTop={scrollTop} />
     </>
   );
 };
