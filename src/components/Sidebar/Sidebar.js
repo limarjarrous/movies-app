@@ -21,7 +21,7 @@ const SideList = ({ genresList, selectedGenres, onSelectGenre, onFilterByGenre }
           );
         })}
       </ul>
-      <Button onClickHandler={onFilterByGenre} align="start">
+      <Button onClickHandler={onFilterByGenre} align="start" tooltip="Apply filters">
         Apply
       </Button>
     </div>

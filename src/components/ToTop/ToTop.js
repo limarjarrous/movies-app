@@ -5,7 +5,7 @@ import "./ToTop.css";
 
 function ToTop({ onScrollTop }) {
   return (
-    <Button className="to_top_btn" onClickHandler={onScrollTop}>
+    <Button className="to_top_btn" onClickHandler={onScrollTop} tooltip="Scroll to top">
       <FiArrowUp style={{ fontSize: "1.1rem" }} />
     </Button>
   );

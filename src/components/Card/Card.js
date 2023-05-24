@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { BsStarFill } from "react-icons/bs";
 import apiConfig from "../../api/apiConfig";
+import ToolTip from "../Tooltip/Tooltip";
 import "./Card.css";
 
 const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onLikeMovie }) => {
@@ -45,27 +46,33 @@ const Card = ({ id, title, vote_average, release_date, poster_path, isLiked, onL
           alt={title}
         />
         <div className="card_body" onClick={() => handleClickMovie(id)}>
-          <p className="card_title">{title}</p>
+          <ToolTip tooltip={`${title}`} placement="top">
+            <p className="card_title">{title}</p>
+          </ToolTip>
           <div className="card_detail">
-            <div className="card_rating">
-              <BsStarFill className="rating_star" />
-              <p className="card_badge">{vote_average?.toFixed(1)}</p>
-            </div>
+            <ToolTip tooltip={`${vote_average?.toFixed(1)} | IMDB Rating`}>
+              <div className="card_rating">
+                <BsStarFill className="rating_star" />
+                <p className="card_badge">{vote_average?.toFixed(1)}</p>
+              </div>
+            </ToolTip>
             <p className="card_year">{release_date?.split("-")[0]}</p>
           </div>
         </div>
-        <span
-          className="card_btn"
-          onClick={() => {
-            onLikeMovie(movie);
-          }}
-        >
-          {isLiked ? (
-            <FaHeart style={{ color: "var(--text-error)", fontSize: "1.1rem" }} />
-          ) : (
-            <FaRegHeart style={{ color: "#828282", fontSize: "1.1rem" }} />
-          )}
-        </span>
+        <ToolTip tooltip="Add to favorites">
+          <span
+            className="card_btn"
+            onClick={() => {
+              onLikeMovie(movie);
+            }}
+          >
+            {isLiked ? (
+              <FaHeart style={{ color: "var(--text-error)", fontSize: "1.1rem" }} />
+            ) : (
+              <FaRegHeart style={{ color: "#828282", fontSize: "1.1rem" }} />
+            )}
+          </span>
+        </ToolTip>
       </div>
     </>
   );

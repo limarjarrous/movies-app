@@ -33,19 +33,32 @@ const SignUp = ({ onSwitchForm, onAuth }) => {
 
             <label className="form_item">
               <p className="form_label">First Name</p>
-              <input className="form_input" {...register("firstName", { required: "First name is required" })} />
+              <input
+                className="form_input"
+                {...register("firstName", { required: "First name is required" })}
+                placeholder="Your first name"
+              />
               <p className="validation_msg">{errors.firstName?.message}</p>
             </label>
 
             <label className="form_item">
               <p className="form_label">Last Name</p>
-              <input className="form_input" {...register("lastName", { required: "Last name is required" })} />
+              <input
+                className="form_input"
+                {...register("lastName", { required: "Last name is required" })}
+                placeholder="Your last name"
+              />
               <p className="validation_msg">{errors.lastName?.message}</p>
             </label>
 
             <label className="form_item">
               <p className="form_label">Email</p>
-              <input className="form_input" type="email" {...register("email", { required: "Email is required" })} />
+              <input
+                className="form_input"
+                type="email"
+                {...register("email", { required: "Email is required" })}
+                placeholder="Your email"
+              />
               <p className="validation_msg">{errors.email?.message}</p>
             </label>
 
@@ -55,6 +68,7 @@ const SignUp = ({ onSwitchForm, onAuth }) => {
                 className="form_input"
                 type="password"
                 {...register("password", { required: "Password is required" })}
+                placeholder="New password"
               />
               <p className="validation_msg">{errors.password?.message}</p>
             </label>

@@ -53,15 +53,20 @@
 .form_input {
     height: 36px;
     padding: 0 .9em;
-    color: var(--text-grey-a);
+    color: var(--text-grey-c);
     border: none;
     border-radius: 8px;
-    background-color: var(--text-grey-3);
+    background-color: var(--text-grey-2);
+}
+
+.form_input::placeholder {
+    color: var(--text-grey-8);
+    font-size: 0.7em;
 }
 
 .form_input:hover,
 .form_input:focus {
-    background-color: var(--text-grey-5);
+    background-color: var(--text-grey-3);
     border: none;
     outline: none;
 }

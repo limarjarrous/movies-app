@@ -1,12 +1,15 @@
 import React from "react";
 import "./Button.css";
+import ToolTip from "../Tooltip/Tooltip";
 
-const Button = ({ children, onClickHandler, align = "center", ...rest }) => {
+const Button = ({ children, onClickHandler, tooltip, align = "center", ...rest }) => {
   return (
     <div className="btn_wrapper" style={{ placeContent: `${align}` }}>
-      <button onClick={onClickHandler} {...rest}>
-        {children}
-      </button>
+      <ToolTip tooltip={tooltip}>
+        <button onClick={onClickHandler} {...rest}>
+          {children}
+        </button>
+      </ToolTip>
     </div>
   );
 };

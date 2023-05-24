@@ -6,6 +6,7 @@ import TabsList from "@mui/base/TabsList";
 import TabPanel from "@mui/base/TabPanel";
 import ListCards from "../ListCards/ListCards";
 import "./TabsMenu.css";
+import ToolTip from "../Tooltip/Tooltip";
 
 const TabsMenu = ({ movies, showMore, onLoadMore, onSelectTab, handleToggle, filtered }) => {
   return (
@@ -14,18 +15,24 @@ const TabsMenu = ({ movies, showMore, onLoadMore, onSelectTab, handleToggle, fil
         {!filtered && (
           <>
             <Tab value="upcoming" className="menu_tab">
-              Coming Up
+              <ToolTip tooltip="Upcoming Movies">
+                <div>Coming up</div>
+              </ToolTip>
             </Tab>
             <Tab value="top_rated" className="menu_tab">
-              Top-Rated
+              <ToolTip tooltip="Top-rated Movies">
+                <div>Top-Rated</div>
+              </ToolTip>
             </Tab>
             <Tab value="popular" className="menu_tab">
-              Popular
+              <ToolTip tooltip="Popular Movies">
+                <div>Popular</div>
+              </ToolTip>
             </Tab>
           </>
         )}
         <div style={{ flexGrow: 1 }}>
-          <Button align="end" onClickHandler={handleToggle}>
+          <Button align="end" onClickHandler={handleToggle} tooltip="Filter by genre">
             Genres
           </Button>
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Avvvatars from "avvvatars-react";
 import IconButton from "@mui/material/IconButton";
 import { Box, Menu, Divider, MenuItem, Tooltip } from "@mui/material";
+import ToolTip from "../Tooltip/Tooltip";
 import "./NavDropdown.css";
 
 const NavDropdown = ({ initials, onLogout }) => {
@@ -18,7 +19,7 @@ const NavDropdown = ({ initials, onLogout }) => {
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <Tooltip title="Account settings">
+        <ToolTip tooltip="Account settings">
           <IconButton
             onClick={handleClick}
             aria-controls={open ? "account-menu" : undefined}
@@ -28,7 +29,7 @@ const NavDropdown = ({ initials, onLogout }) => {
           >
             <Avvvatars value={initials} />
           </IconButton>
-        </Tooltip>
+        </ToolTip>
       </Box>
       <Menu
         anchorEl={anchorEl}

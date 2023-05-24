@@ -76,14 +76,14 @@ const Nav = ({ onSearch }) => {
             aria-describedby="search_button"
             onChange={handleChangeText}
           />
-          <Button className="search_btn" type="submit">
+          <Button className="search_btn" type="submit" tooltip="Search">
             <BsSearch />
           </Button>
         </form>
 
         {/* AUTH */}
         {!isAuth ? (
-          <Button onClickHandler={handleAuth} align="end">
+          <Button onClickHandler={handleAuth} align="end" tooltip="Sign in">
             Sign in
           </Button>
         ) : (
