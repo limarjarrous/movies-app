@@ -34,6 +34,11 @@ const NavDropdown = ({ initials, onLogout }) => {
         </ToolTip>
       </Box>
       <Menu
+        sx={{
+          mt: "1px",
+          "& .MuiPaper-root": { borderRadius: "20px" },
+          "& .MuiMenu-paper": { backgroundColor: "#12121266", backdropFilter: "blur(20px)" },
+        }}
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
@@ -67,7 +72,7 @@ const NavDropdown = ({ initials, onLogout }) => {
       >
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <FiUser style={{ color: "var(--text-grey-9)" }} />
+            <FiUser />
           </ListItemIcon>
           <ListItemText>Profile</ListItemText>
         </MenuItem>
@@ -76,13 +81,13 @@ const NavDropdown = ({ initials, onLogout }) => {
 
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <FiSettings style={{ color: "var(--text-grey-9)" }} />
+            <FiSettings />
           </ListItemIcon>
           <ListItemText>Settings</ListItemText>
         </MenuItem>
         <MenuItem onClick={onLogout}>
           <ListItemIcon>
-            <AiOutlinePoweroff style={{ color: "var(--text-grey-9)" }} />
+            <AiOutlinePoweroff />
           </ListItemIcon>
           <ListItemText>Logout</ListItemText>
         </MenuItem>

@@ -1,17 +1,39 @@
-.MuiList-root {
-    background-color: var(--text-grey-2);
-    min-width: 12em;
-}
-
 .MuiBox-root button {
     padding: 0;
 }
 
-.MuiList-root li:hover {
-    background-color: var(--text-grey-3);
-}
-
 .MuiBox-root p {
     font-size: .7rem;
+}
 
+.MuiList-root {
+    color: var(--text-grey-a);
+    min-width: 12em;
+}
+
+.MuiList-root li {
+    padding-left: 1rem;
+    transition: all .3s ease;
+}
+
+.MuiList-root li:hover {
+    background-color: #12121200;
+    padding-left: 1.5rem;
+    color: var(--text-white);
+}
+
+.MuiList-root li .MuiListItemIcon-root {
+    color: var(--text-grey-a)
+}
+
+.MuiList-root li:hover .MuiListItemIcon-root {
+    color: var(--text-white);
+}
+
+.MuiList-root li .MuiListItemText-root span {
+    font-size: .9em;
+}
+
+.MuiList-root .MuiDivider-root {
+    background-color: var(--text-grey-5);
 }
